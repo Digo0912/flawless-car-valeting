@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flawless Car Valeting | Edinburgh & The Lothians</title>
+    <meta name="description" content="Premium car valeting and detailing services in Edinburgh. Where precision meets passion.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'flawless-green': '#00FF00',
+                        'luxury-black': '#050505',
+                        'luxury-gray': '#151619',
+                    },
+                    animation: {
+                        'slow-pan': 'slow-pan 20s linear infinite alternate',
+                    },
+                    keyframes: {
+                        'slow-pan': {
+                            'from': { 'background-position': '0% 50%' },
+                            'to': { 'background-position': '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: white;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Transition */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #151619;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00FF00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-luxury-black/80 backdrop-blur-md border-b border-white/5 transition-transform duration-300">
+        <div class="flex items-center gap-4">
+            <a href="#" class="flex items-center">
+                <img 
+                    src="https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/qt%3Dq-95.webp/:/rs=w:258,h:196,cg:true,m/cr=w:258,h:196/qt=q:100/ll" 
+                    alt="Flawless Car Valeting" 
+                    class="h-12 md:h-16 w-auto object-contain"
+                    onerror="this.src='https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/qt%3Dq-95.webp'"
+                >
+            </a>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#home" class="text-[10px] uppercase tracking-widest text-white/60 hover:text-flawless-green transition-colors">Home</a>
+            <a href="#services" class="text-[10px] uppercase tracking-widest text-white/60 hover:text-flawless-green transition-colors">Services</a>
+            <a href="#portfolio" class="text-[10px] uppercase tracking-widest text-white/60 hover:text-flawless-green transition-colors">Portfolio</a>
+            <a href="#about" class="text-[10px] uppercase tracking-widest text-white/60 hover:text-flawless-green transition-colors">About</a>
+            <a href="#reviews" class="text-[10px] uppercase tracking-widest text-white/60 hover:text-flawless-green transition-colors">Reviews</a>
+            <a href="#faq" class="text-[10px] uppercase tracking-widest text-white/60 hover:text-flawless-green transition-colors">FAQ</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="tel:07481449857" class="hidden sm:flex items-center gap-2 text-xs font-mono text-flawless-green">
+                <i data-lucide="phone" size="14"></i>
+                07481 449 857
+            </a>
+            <a 
+                href="https://api.whatsapp.com/send/?phone=447481449857&text&type=phone_number&app_absent=0&wame_ctl=1"
+                target="_blank"
+                class="px-4 py-2 bg-flawless-green text-black text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-white transition-colors"
+            >
+                Book Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=2000&auto=format&fit=crop" 
+                alt="Luxury Car Detailing" 
+                class="w-full h-full object-cover opacity-40 scale-105 animate-slow-pan"
+            >
+            <div class="absolute inset-0 bg-gradient-to-b from-luxury-black via-transparent to-luxury-black"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl reveal">
+            <span class="text-flawless-green font-mono text-xs uppercase tracking-[0.5em] mb-4 block">
+                Edinburgh & The Lothians
+            </span>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif font-light leading-none mb-6">
+                Where <span class="italic text-flawless-green">Precision</span> <br> 
+                Meets Passion
+            </h1>
+            <p class="text-lg md:text-xl text-white/60 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Experience the ultimate in car care with our expert detailing services. 
+                Tailored for those who demand nothing but perfection.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-flawless-green text-black font-bold uppercase tracking-widest rounded-full hover:bg-white transition-all transform hover:scale-105 text-center">
+                    Explore Packages
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=447481449857&text&type=phone_number&app_absent=0&wame_ctl=1" target="_blank" class="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-widest rounded-full hover:bg-white/10 transition-all text-center">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+            <i data-lucide="chevron-down" size="32"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-12 bg-luxury-gray scroll-mt-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 reveal">
+                    <span class="text-flawless-green font-mono text-xs uppercase tracking-[0.3em]">Our Mission</span>
+                    <h2 class="text-5xl md:text-6xl font-serif leading-tight">
+                        Unparalleled Care for <br>
+                        <span class="italic">Exceptional Vehicles</span>
+                    </h2>
+                    <p class="text-white/60 leading-relaxed text-lg">
+                        Flawless delivers top-tier car valeting for both commercial and residential clients throughout Edinburgh. 
+                        Our 5-star service extends to cars, vans, trucks, caravans, and motorhomes. 
+                        We assure professionalism using cutting-edge equipment and premium cleaning products, 
+                        ensuring consistently high-quality results.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-flawless-green"><i data-lucide="shield" size="20"></i></div>
+                            <h4 class="font-bold uppercase tracking-widest text-sm">Fully Insured</h4>
+                            <p class="text-white/40 text-sm">Peace of mind with our comprehensive insurance coverage.</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-flawless-green"><i data-lucide="star" size="20"></i></div>
+                            <h4 class="font-bold uppercase tracking-widest text-sm">5-Star Service</h4>
+                            <p class="text-white/40 text-sm">Consistently rated top-tier by our exclusive clientele.</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-flawless-green"><i data-lucide="award" size="20"></i></div>
+                            <h4 class="font-bold uppercase tracking-widest text-sm">Premium Products</h4>
+                            <p class="text-white/40 text-sm">We exclusively use cutting-edge equipment and professional products.</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-flawless-green"><i data-lucide="clock" size="20"></i></div>
+                            <h4 class="font-bold uppercase tracking-widest text-sm">Mobile Service</h4>
+                            <p class="text-white/40 text-sm">We bring professionalism to your doorstep, home or business.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative reveal">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
+                        <img 
+                            src="https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/Screenshot%202023-12-01%20at%2012.45.48%20am.png/:/cr=t:8.22%25,l:0%25,w:100%25,h:83.55%25/rs=w:1200,h:1200,cg:true" 
+                            alt="Detailing Process" 
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <div class="absolute -bottom-10 -left-10 glass-card p-8 rounded-2xl hidden md:block max-w-xs">
+                        <h3 class="text-2xl font-serif italic mb-2">Our Team</h3>
+                        <p class="text-sm text-white/60 leading-relaxed">
+                            Our seasoned professionals share a passion for cars and a commitment to delivering exceptional customer service. 
+                            We take immense pride in our work, aiming to surpass your expectations at every turn.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 md:px-12 bg-luxury-black scroll-mt-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="text-flawless-green font-mono text-xs uppercase tracking-[0.3em]">Exquisite Packages</span>
+                <h2 class="text-5xl md:text-7xl font-serif mt-4">Tailored Perfection</h2>
+                <p class="text-white/40 mt-6 max-w-2xl mx-auto">
+                    Larger vehicles are an additional £10. Additional £9 per half hour thereafter for extended sessions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                <!-- Package 1 -->
+                <div class="reveal relative p-8 rounded-3xl border border-white/10 bg-luxury-gray flex flex-col">
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif mb-2">Full Exterior Valet</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-sm text-white/40">From</span>
+                            <span class="text-4xl font-mono text-flawless-green">£30</span>
+                            <span class="text-sm text-white/40">*</span>
+                        </div>
+                        <p class="text-xs text-white/40 mt-2 font-mono uppercase tracking-widest">30 min - 1.5 hours</p>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Acid free alloy wheel clean</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Wheel arches</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> 2 bucket safe wash</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Tyre shine</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Polish</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Chamois dry</li>
+                    </ul>
+                </div>
+
+                <!-- Package 2 (Recommended) -->
+                <div class="reveal relative p-8 rounded-3xl border border-flawless-green bg-flawless-green/5 flex flex-col">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-flawless-green text-black text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                        Most Popular
+                    </span>
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif mb-2">Mini Valet</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-sm text-white/40">From</span>
+                            <span class="text-4xl font-mono text-flawless-green">£45</span>
+                            <span class="text-sm text-white/40">*</span>
+                        </div>
+                        <p class="text-xs text-white/40 mt-2 font-mono uppercase tracking-widest">1.5 hours</p>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Safe wash with snow foam</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> 2 bucket safe wash</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Door shuts cleaned & waxed</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Windows polished</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Steam cleaned interior</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Vacuum & rubbish removal</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Dashboard dusted & dressed</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Air freshener</li>
+                    </ul>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="reveal relative p-8 rounded-3xl border border-white/10 bg-luxury-gray flex flex-col">
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif mb-2">Full Valet</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-sm text-white/40">From</span>
+                            <span class="text-4xl font-mono text-flawless-green">£80</span>
+                            <span class="text-sm text-white/40">*</span>
+                        </div>
+                        <p class="text-xs text-white/40 mt-2 font-mono uppercase tracking-widest">2.5 - 3 hours</p>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> *All mini valet features*</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Spray sealant for gloss</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Acid free wheel clean</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Upholstery shampooed</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Deep cleaned (leather/fabric)</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> All other plastics dressed</li>
+                        <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="text-flawless-green shrink-0 mt-0.5" size="16"></i> Bug and tree sap removed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Add-ons -->
+            <div class="reveal glass-card rounded-3xl p-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+                    <div>
+                        <h3 class="text-4xl font-serif">A La Carte Add-Ons</h3>
+                        <p class="text-white/40 mt-2">Enhance your package with our specialized treatments.</p>
+                    </div>
+                    <div class="px-6 py-3 border border-flawless-green/30 rounded-full text-flawless-green text-xs font-mono uppercase tracking-widest">
+                        From £10
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="group cursor-pointer">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold uppercase tracking-widest text-xs group-hover:text-flawless-green transition-colors">Pet Hair Removal</h4>
+                            <span class="text-flawless-green font-mono text-sm">£10</span>
+                        </div>
+                        <p class="text-white/40 text-xs leading-relaxed">Effortlessly reclaim your car's pristine interior.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold uppercase tracking-widest text-xs group-hover:text-flawless-green transition-colors">Tar Removal</h4>
+                            <span class="text-flawless-green font-mono text-sm">£10</span>
+                        </div>
+                        <p class="text-white/40 text-xs leading-relaxed">Efficiently remove stubborn tar spots from surfaces.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold uppercase tracking-widest text-xs group-hover:text-flawless-green transition-colors">Wax</h4>
+                            <span class="text-flawless-green font-mono text-sm">£10</span>
+                        </div>
+                        <p class="text-white/40 text-xs leading-relaxed">Bringing brilliance to your vehicle, one expert waxing at a time.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold uppercase tracking-widest text-xs group-hover:text-flawless-green transition-colors">Sand Removal</h4>
+                            <span class="text-flawless-green font-mono text-sm">£15</span>
+                        </div>
+                        <p class="text-white/40 text-xs leading-relaxed">Say goodbye to sand residue with our thorough service.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 px-6 md:px-12 bg-luxury-black scroll-mt-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal">
+                <div class="max-w-2xl">
+                    <span class="text-flawless-green font-mono text-xs uppercase tracking-[0.3em]">Our Work</span>
+                    <h2 class="text-5xl md:text-7xl font-serif mt-4 italic">The Flawless <br> Portfolio</h2>
+                </div>
+                <p class="text-white/40 max-w-sm text-sm leading-relaxed mb-2">
+                    A showcase of our recent detailing projects. From luxury sedans to high-performance supercars, we deliver perfection on every surface.
+                </p>
+            </div>
+
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <!-- Images will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 px-6 md:px-12 bg-luxury-gray relative overflow-hidden scroll-mt-24">
+        <div class="absolute top-0 right-0 opacity-5 pointer-events-none">
+            <i data-lucide="quote" size="400"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal">
+                <div class="max-w-2xl">
+                    <span class="text-flawless-green font-mono text-xs uppercase tracking-[0.3em]">Testimonials</span>
+                    <h2 class="text-5xl md:text-7xl font-serif mt-4 italic">The Flawless <br> Reputation</h2>
+                </div>
+                <div class="flex items-center gap-4 glass-card px-6 py-4 rounded-2xl">
+                    <div class="flex text-flawless-green">
+                        <i data-lucide="star" size="16" fill="currentColor"></i>
+                        <i data-lucide="star" size="16" fill="currentColor"></i>
+                        <i data-lucide="star" size="16" fill="currentColor"></i>
+                        <i data-lucide="star" size="16" fill="currentColor"></i>
+                        <i data-lucide="star" size="16" fill="currentColor"></i>
+                    </div>
+                    <span class="text-sm font-bold tracking-widest uppercase">5.0 Rating</span>
+                </div>
+            </div>
+
+            <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reviews will be injected by JS -->
+            </div>
+
+            <div class="mt-16 text-center reveal">
+                <button class="text-flawless-green text-xs font-bold uppercase tracking-[0.3em] hover:text-white transition-colors">
+                    Read All 5-Star Reviews →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 px-6 md:px-12 bg-luxury-black scroll-mt-24">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-flawless-green font-mono text-xs uppercase tracking-[0.3em]">Knowledge Base</span>
+                <h2 class="text-5xl md:text-6xl font-serif mt-4 italic">Frequently Asked</h2>
+                <p class="text-white/40 mt-4">
+                    Please reach us via WhatsApp or Phone if you cannot find an answer to your question.
+                </p>
+            </div>
+
+            <div id="faq-list" class="space-y-4">
+                <!-- FAQ items will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-black pt-24 pb-12 px-6 md:px-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24">
+                <div class="lg:col-span-2 space-y-8 reveal">
+                    <div class="flex items-center gap-2">
+                        <img 
+                            src="https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/qt%3Dq-95.webp/:/rs=w:258,h:196,cg:true,m/cr=w:258,h:196/qt=q:100/ll" 
+                            alt="Flawless Car Valeting" 
+                            class="h-16 w-auto object-contain"
+                            onerror="this.src='https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/qt%3Dq-95.webp'"
+                        >
+                    </div>
+                    <p class="text-white/40 max-w-md leading-relaxed">
+                        Premium car valeting and detailing services for those who demand excellence. 
+                        Serving Edinburgh and The Lothians with precision and passion.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/flawlesscarvaleting/" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-flawless-green hover:text-black transition-all">
+                            <i data-lucide="instagram" size="18"></i>
+                        </a>
+                        <a href="https://web.facebook.com/flawlesscarvaletingedinburgh/?_rdc=1&_rdr#" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-flawless-green hover:text-black transition-all">
+                            <i data-lucide="facebook" size="18"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <h4 class="font-bold uppercase tracking-widest text-xs text-flawless-green">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="text-white/60 hover:text-white transition-colors text-sm uppercase tracking-widest">Home</a></li>
+                        <li><a href="#services" class="text-white/60 hover:text-white transition-colors text-sm uppercase tracking-widest">Services</a></li>
+                        <li><a href="#about" class="text-white/60 hover:text-white transition-colors text-sm uppercase tracking-widest">About</a></li>
+                        <li><a href="#reviews" class="text-white/60 hover:text-white transition-colors text-sm uppercase tracking-widest">Reviews</a></li>
+                        <li><a href="#faq" class="text-white/60 hover:text-white transition-colors text-sm uppercase tracking-widest">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <h4 class="font-bold uppercase tracking-widest text-xs text-flawless-green">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-white/60 text-sm">
+                            <i data-lucide="phone" size="16" class="text-flawless-green"></i>
+                            <a href="tel:07481449857" class="hover:text-white transition-colors">07481 449 857</a>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/60 text-sm">
+                            <i data-lucide="map-pin" size="16" class="text-flawless-green"></i>
+                            <span>Edinburgh & The Lothians</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/5">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-white/20">
+                    © <span id="year"></span> Flawless Car Valeting Edinburgh. All Rights Reserved.
+                </p>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/40 hover:text-flawless-green transition-colors">
+                    Back to Top <i data-lucide="arrow-up" size="12"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dynamic Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Portfolio Data
+        const portfolioImages = [
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/8d0b58b3-1a41-4fb0-8dc7-d8f6c56b1436.jpg/:/cr=t:16.09%25,l:0%25,w:100%25,h:66.67%25/rs=w:1200,h:600,cg:true",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/d1b6dacc-b076-4622-97d1-974bdbfa4c8b.jpg/:/rs=w:1160,h:870",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/49baa5e6-a217-4955-8195-8b9f2ba2cb9f.jpeg/:/rs=w:1160,h:1160",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/7f2bf2ca-4d3e-4ec7-94de-4334e7b5566c.jpeg/:/rs=w:1160,h:870",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.35.jpeg/:/rs=w:1160,h:1155",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.33.jpeg/:/rs=w:1160,h:1161",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/car.webp/:/rs=w:984,h:738",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.31.jpeg/:/rs=w:1160,h:1146",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.36-4b4b9cc.jpeg/:/rs=w:984,h:1075",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.36.jpeg/:/rs=w:984,h:1106",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.33-2.jpeg/:/rs=w:1160,h:1145",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.35-2.jpeg/:/rs=w:1160,h:1152",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.34-2.jpeg/:/rs=w:1160,h:1149",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.36-2.jpeg/:/rs=w:984,h:1075",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202023-12-01%20at%2001.03.34.jpeg/:/rs=w:1160,h:815",
+            "https://img1.wsimg.com/isteam/ip/87bb89e1-9a0c-4c95-a5a2-5ec0bf183879/WhatsApp%20Image%202024-05-17%20at%2015.57.00.jpeg/:/cr=t:33.33%25,l:0%25,w:100%25,h:66.67%25/rs=w:1200,h:600,cg:true"
+        ];
+
+        const portfolioGrid = document.getElementById('portfolio-grid');
+        portfolioImages.forEach((src, i) => {
+            const div = document.createElement('div');
+            div.className = 'reveal relative aspect-square overflow-hidden rounded-2xl border border-white/5 group';
+            div.innerHTML = `
+                <img src="${src}" alt="Portfolio project ${i + 1}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-luxury-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                    <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-flawless-green font-mono text-[10px] uppercase tracking-[0.2em]">Project ${i + 1}</span>
+                        <h4 class="text-white font-serif italic text-lg mt-1">Exquisite Detail</h4>
+                    </div>
+                </div>
+            `;
+            portfolioGrid.appendChild(div);
+        });
+
+        // Reviews Data
+        const reviews = [
+            { name: "Chris Gibbons", date: "1 month ago", initial: "C", text: "Excellent job by the team at Flawless car valet. The attention to detail was unreal and they left both cars looking brand new ⭐ Nothing was a hassle to arrange, Paul was flexible and accommodating. Highly recommend 🙌" },
+            { name: "Alex Carter", date: "4 months ago", initial: "A", text: "Paul did an amazing job on our car, looks like it came from a showroom rather than hosting a toddler's birthday party. My only criticism is I can no longer tell North from looking at the lichen on the roof box ;)" },
+            { name: "Chris Young", date: "1 year ago", initial: "C", text: "Brilliant job cleaning my new car by Paul, who showed extremely high standards of professionalism and was very knowledgeable in car care. An excellent service so I'll be keeping his number for future use. Thanks Paul!" },
+            { name: "Allan Cameron", date: "2 weeks ago", initial: "A", text: "Booked as a 'gift' for my wife as her car has been used to transport 2 dogs, and over the last few months it had become quite a mess. Paul did an incredible job, it looks brand new." },
+            { name: "Eilidh Mackay", date: "2 days ago", initial: "E", text: "Really fantastic service! Paul did an immaculate job on both of our cars and it was incredibly reasonably priced for the level of detail provided. Highly recommend to anyone in Edinburgh." }
+        ];
+
+        const reviewsGrid = document.getElementById('reviews-grid');
+        reviews.forEach((r, i) => {
+            const div = document.createElement('div');
+            div.className = 'reveal glass-card p-10 rounded-3xl flex flex-col h-full';
+            div.innerHTML = `
+                <div class="flex text-flawless-green mb-6">
+                    <i data-lucide="star" size="12" fill="currentColor"></i>
+                    <i data-lucide="star" size="12" fill="currentColor"></i>
+                    <i data-lucide="star" size="12" fill="currentColor"></i>
+                    <i data-lucide="star" size="12" fill="currentColor"></i>
+                    <i data-lucide="star" size="12" fill="currentColor"></i>
+                </div>
+                <p class="text-white/70 italic leading-relaxed mb-8 flex-grow">"${r.text}"</p>
+                <div class="flex items-center gap-4 border-t border-white/5 pt-6">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl font-serif">${r.initial}</div>
+                    <div>
+                        <h4 class="font-bold text-sm uppercase tracking-widest">${r.name}</h4>
+                        <p class="text-[10px] text-white/30 uppercase tracking-widest">${r.date}</p>
+                    </div>
+                </div>
+            `;
+            reviewsGrid.appendChild(div);
+        });
+
+        // FAQ Data
+        const faqs = [
+            { q: "What is included in your basic package?", a: "Our basic exterior package includes an acid-free alloy wheel clean, wheel arches, a 2-bucket safe wash, tyre shine, polish, and a chamois dry. For a more comprehensive service, we recommend our Mini Valet which includes interior care." },
+            { q: "What is the difference between waxing and ceramic coating?", a: "Waxing is a temporary solution that provides a protective layer to your car's exterior, typically lasting a few months. Ceramic coating, on the other hand, is a long-lasting chemical polymer solution that provides a much more durable layer of protection against environmental factors, often lasting years." },
+            { q: "Why should I choose detailing versus just washing my own car?", a: "Detailing does more than merely clean your car. It preserves and in some cases restores its original condition through professional thorough processes involving tire and rim treatment, interior leather and vinyl conditioning, waxing and applied protectants that keep your car's paint job looking like it just arrived in the showroom. Moreover, regular detailing extends the life of your car, maintains safety and integrity of your vehicle and actually adds to its value." }
+        ];
+
+        const faqList = document.getElementById('faq-list');
+        faqs.forEach((faq, i) => {
+            const div = document.createElement('div');
+            div.className = `faq-item border border-white/10 rounded-2xl overflow-hidden transition-all ${i === 0 ? 'active bg-white/5' : ''}`;
+            div.innerHTML = `
+                <button class="w-full p-6 flex items-center justify-between text-left faq-trigger">
+                    <span class="font-serif text-xl md:text-2xl">${faq.q}</span>
+                    <div class="text-flawless-green faq-icon transition-transform duration-300">
+                        <i data-lucide="plus" size="20"></i>
+                    </div>
+                </button>
+                <div class="faq-content">
+                    <div class="p-6 pt-0 text-white/60 leading-relaxed">${faq.a}</div>
+                </div>
+            `;
+            faqList.appendChild(div);
+        });
+
+        // FAQ Logic
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    other.classList.remove('active', 'bg-white/5');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active', 'bg-white/5');
+                }
+            });
+        });
+
+        // Scroll Reveal Logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar Scroll Effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                navbar.classList.remove('-translate-y-full');
+                return;
+            }
+
+            if (currentScroll > lastScroll && !navbar.classList.contains('-translate-y-full')) {
+                // Scroll Down
+                navbar.classList.add('-translate-y-full');
+            } else if (currentScroll < lastScroll && navbar.classList.contains('-translate-y-full')) {
+                // Scroll Up
+                navbar.classList.remove('-translate-y-full');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
